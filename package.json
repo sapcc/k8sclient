@@ -11,7 +11,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sapcc/k8sClient.git"
+    "url": "git+https://github.com/sapcc/k8sclient"
   },
   "keywords": [
     "kubernetes",
@@ -19,9 +19,9 @@
     "client"
   ],
   "bugs": {
-    "url": "https://github.com/sapcc/k8sClient/issues"
+    "url": "https://github.com/sapcc/k8sclient/issues"
   },
-  "homepage": "https://github.com/sapcc/k8sClient#readme",
+  "homepage": "https://github.com/sapcc/k8sclient#readme",
   "devDependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
