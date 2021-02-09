@@ -4,6 +4,8 @@ This client is intended for use in the browser (not tested in node). It uses the
 
 The k8sclient enables communication with the Kubernetes API. In doing so, the client largely dispenses with the interpretation of the data and adds its own minimally necessary logic. In addition to the standard HTTP methods such as GET or POST, it implements the WATCH method, which sets up a stream to the server and reacts to the events.
 
+All functions return **Promise** objects and can therefore be processed with a chain of ```then```. With the ```catch``` call, possible errors are caught.
+
 The client expects a Kubernetes API endpoint and a token. As soon as both parameters have been provided, the following functions are available:
 
 - head
