@@ -1,7 +1,7 @@
 {
-  "name": "@sapcc/k8sclient",
-  "version": "1.0.0",
-  "description": "IN IE NOT SUPPORTED  * TextDecoder -> shim ? * Object.assign -> babel? * fetch  -> polyfil",
+  "name": "sapcc-k8sclient",
+  "version": "1.0.1",
+  "description": "JavaScript client for Kubernetes API",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && babel src -d dist",

@@ -4,7 +4,7 @@ This client is intended for use in the browser (not tested in node). It uses the
 
 The k8sclient enables communication with the Kubernetes API. In doing so, the client largely dispenses with the interpretation of the data and adds its own minimally necessary logic. In addition to the standard HTTP methods such as GET or POST, it implements the WATCH method, which sets up a stream to the server and reacts to the events.
 
-All functions return **Promise** objects and can therefore be processed with a chain of ```then```. With the ```catch``` call, possible errors are caught.
+All functions return **Promise** objects and can therefore be processed with a chain of `then`. With the `catch` call, possible errors are caught.
 
 The client expects a Kubernetes API endpoint and a token. As soon as both parameters have been provided, the following functions are available:
 
@@ -21,13 +21,13 @@ The client expects a Kubernetes API endpoint and a token. As soon as both parame
 With npm:
 
 ```
-npm install @sapcc/k8sclient
+npm install sapcc-k8sclient
 ```
 
 With yarn:
 
 ```
-yarn add @sapcc/k8sclient
+yarn add sapcc-k8sclient
 ```
 
 # Example Code (ES6)
@@ -35,7 +35,7 @@ yarn add @sapcc/k8sclient
 ## List all pods
 
 ```js
-import { createClient } from "core/k8sClient"
+import { createClient } from "sapcc-k8sclient"
 
 const apiEndpoint = "https://k8s-api.com"
 let token = "BEARER-TOKEN"
@@ -48,7 +48,7 @@ apiClient.get("/api/v1/pods").then((data) => console.log(data))
 ## Create a new namespace
 
 ```js
-import { createClient } from "core/k8sClient"
+import { createClient } from "sapcc-k8sclient"
 
 const apiEndpoint = "https://k8s-api.com"
 let token = "BEARER-TOKEN"
@@ -69,7 +69,7 @@ apiClient.post("/api/v1/namespaces", {
 ## Delete a namespace
 
 ```js
-import { createClient } from "core/k8sClient"
+import { createClient } from "sapcc-k8sclient"
 
 const apiEndpoint = "https://k8s-api.com"
 let token = "BEARER-TOKEN"
@@ -82,7 +82,7 @@ apiClient.delete("/api/v1/namespaces/my_namespace")
 ## Refresh Token
 
 ```js
-import { createClient } from "core/k8sClient"
+import { createClient } from "sapcc-k8sclient"
 
 const apiEndpoint = "https://k8s-api.com"
 let token = "BEARER-TOKEN"
@@ -95,7 +95,7 @@ apiClient.refreshToken("NEW-TOKEN")
 ## Watch
 
 ```js
-import { createClient } from "core/k8sClient"
+import { createClient } from "sapcc-k8sclient"
 
 const apiEndpoint = "https://k8s-api.com"
 let token = "BEARER-TOKEN"
