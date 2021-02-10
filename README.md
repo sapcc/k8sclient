@@ -126,6 +126,7 @@ setTimeout(podsWatch.cancel, 5 * 60 * 1000) // 5 minutes
 All dependencies of this project are expressed in its package.json file. Before you start developing, ensure that you have NPM installed, then run:
 
 ```bash
+npm install
 npm run build
 npm run test
 ```
