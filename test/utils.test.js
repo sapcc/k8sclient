@@ -1,4 +1,4 @@
-import * as utils from "./utils"
+import * as utils from "../src/utils"
 
 describe("isString", () => {
   test("returns true", () => {

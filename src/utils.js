@@ -3,7 +3,7 @@
  * @param {any} value value to be tested
  * @return {Boolean} true or false
  */
-export function isString(value) {
+function isString(value) {
   return typeof value === "string" || value instanceof String
 }
 
@@ -12,7 +12,7 @@ export function isString(value) {
  * @param {any} value value to be tested
  * @return {Boolean} true or false
  */
-export function isNumber(value) {
+function isNumber(value) {
   return value && typeof value === "number" && value.constructor === Number
 }
 
@@ -21,7 +21,7 @@ export function isNumber(value) {
  * @param {any} value value to be tested
  * @return {Boolean} true or false
  */
-export function isObject(value) {
+function isObject(value) {
   return value && typeof value === "object" && value.constructor === Object
 }
 
@@ -30,7 +30,7 @@ export function isObject(value) {
  * @param {any} value value to be tested
  * @return {Boolean} true or false
  */
-export function isArray(value) {
+function isArray(value) {
   return Array.isArray(value)
 }
 
@@ -39,7 +39,7 @@ export function isArray(value) {
  * @param {any} value value to be tested
  * @return {Boolean} true or false
  */
-export function isFunction(value) {
+function isFunction(value) {
   return typeof value === "function"
 }
 
@@ -48,7 +48,7 @@ export function isFunction(value) {
  * @param {any} value value to be tested
  * @return {Boolean} true or false
  */
-export function isNull(value) {
+function isNull(value) {
   return value === null
 }
 
@@ -57,6 +57,16 @@ export function isNull(value) {
  * @param {any} value value to be tested
  * @return {Boolean} true or false
  */
-export function isUndefined(value) {
+function isUndefined(value) {
   return typeof value === "undefined"
+}
+
+export {
+  isString,
+  isNumber,
+  isObject,
+  isArray,
+  isFunction,
+  isNull,
+  isUndefined,
 }

@@ -10,9 +10,7 @@ const prefixedLog = (name) => {
   }
 }
 
-export default {
-  log: prefixedLog("log"),
-  error: prefixedLog("error"),
-  debug: prefixedLog("debug"),
-  info: prefixedLog("info"),
-}
+export const log = prefixedLog("log")
+export const error = prefixedLog("error")
+export const debug = prefixedLog("debug")
+export const info = prefixedLog("info")

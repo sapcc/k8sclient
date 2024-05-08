@@ -171,6 +171,8 @@ function Client(options = {}) {
   this.currentToken = () => token
 }
 
-export const createClient = (options = {}) => {
+function createClient(options = {}) {
   return new Client(options)
 }
+
+export { createClient }

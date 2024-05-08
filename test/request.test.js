@@ -1,11 +1,11 @@
-import request from "./request"
+import request from "../src/request"
 
 const testUrl = "https://apiEndpoint.com"
 
 // TODO: tests response errors
 describe("request", () => {
   beforeEach(() => {
-    window.fetch = jest.fn(() => Promise.resolve({ status: 200 }))
+    global.fetch = jest.fn(() => Promise.resolve({ status: 200 }))
   })
 
   test("request should call fetch", () => {

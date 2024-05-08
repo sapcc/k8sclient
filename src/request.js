@@ -1,5 +1,5 @@
 import { buildUrl } from "./urlHelpers"
-import logger from "./logger"
+import * as logger from "./logger"
 
 // Check response status
 const checkStatus = (response) => {
@@ -20,7 +20,7 @@ const checkStatus = (response) => {
  * @param {Hash} options params, headers and other options supported by fetch.
  * @return {Promise} The response promise.
  */
-export default (method, url, options) => {
+function request(method, url, options) {
   // add params to url
   if (options.params) url = buildUrl(url, options.params)
 
@@ -48,3 +48,5 @@ export default (method, url, options) => {
   // make the call
   return fetch(url, fetchOptions).then(checkStatus)
 }
+
+export default request

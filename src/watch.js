@@ -1,12 +1,10 @@
 import request from "./request"
-import { TextDecoder } from "text-encoding"
-import logger from "./logger"
-import "regenerator-runtime/runtime"
+import * as logger from "./logger"
 
-export const ADDED = "ADDED"
-export const MODIFIED = "MODIFIED"
-export const DELETED = "DELETED"
-export const ERROR = "ERROR"
+const ADDED = "ADDED"
+const MODIFIED = "MODIFIED"
+const DELETED = "DELETED"
+const ERROR = "ERROR"
 const BOOKMARK = "BOOKMARK"
 
 /**
@@ -15,7 +13,7 @@ const BOOKMARK = "BOOKMARK"
  * @param {object} options
  * @param {function} getCurrentToken Optional, if given this watch request will call it before every start.
  */
-export function Watch(url, options = {}, getCurrentToken) {
+function Watch(url, options = {}, getCurrentToken) {
   // listeners
   const listeners = {
     [ADDED]: [],
@@ -111,11 +109,9 @@ export function Watch(url, options = {}, getCurrentToken) {
 
     logger.debug(PREFIX, "get resource version from api")
     // make a list request to get resourceVersion
-    const { metadata, items } = await request(
-      "GET",
-      url,
-      options
-    ).then((response) => response.json())
+    const { metadata, items } = await request("GET", url, options).then(
+      (response) => response.json()
+    )
     resourceVersion = metadata.resourceVersion
     if (items) informListeners(ADDED, items)
 
@@ -246,3 +242,5 @@ export function Watch(url, options = {}, getCurrentToken) {
     controller.abort()
   }
 }
+
+export { ADDED, MODIFIED, DELETED, ERROR, Watch }
