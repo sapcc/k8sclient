@@ -5,7 +5,7 @@ import { isString, isNumber, isObject } from "./utils"
  * @param {Object} data key value object.
  * @return {string}
  */
-const encodeQueryData = data => {
+const encodeQueryData = (data) => {
   if (!data) return
   const ret = []
   for (let d in data)
@@ -19,7 +19,7 @@ const encodeQueryData = data => {
  * @param {Object} params params, headers and other options supported by fetch.
  * @return {string}
  */
-export function buildUrl() {
+function buildUrl() {
   const args = []
   for (let i = 0; i < arguments.length; i++)
     typeof arguments[i] !== "undefined" && args.push(arguments[i])
@@ -34,7 +34,7 @@ export function buildUrl() {
   let params = isObject(args[args.length - 1]) ? args.pop() : null
 
   // validate arguments
-  args.forEach(arg => {
+  args.forEach((arg) => {
     if (!arg || !(isString(arg) || isNumber(arg)))
       throw new Error(
         "Bad parameters: buildUrl accepts only strings and number and hash map as the last parameter"
@@ -56,3 +56,5 @@ export function buildUrl() {
 
   return url
 }
+
+export { buildUrl }

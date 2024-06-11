@@ -1,4 +1,2 @@
 // import "whatwg-fetch"
-import { createClient } from "./client"
-
-export { createClient }
+export { createClient } from "./client"

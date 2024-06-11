@@ -1,12 +1,12 @@
 # JavaScript client for Kubernetes API
 
-This client is intended for use in the browser (not tested in node). It uses the fetch API and runs in all modern browsers. For older browsers, the fetch polyfil (https://github.com/github/fetch) should be used.
+This client is designed for use in the browser (not tested in Node.js). It utilizes the fetch API and is compatible with all modern browsers. For older browsers, the fetch polyfill (github/fetch) should be used.
 
-The k8sclient enables communication with the Kubernetes API. In doing so, the client largely dispenses with the interpretation of the data and adds its own minimally necessary logic. In addition to the standard HTTP methods such as GET or POST, it implements the WATCH method, which sets up a stream to the server and reacts to the events.
+The k8sclient facilitates communication with the Kubernetes API. It minimizes data interpretation and adds only essential logic. In addition to standard HTTP methods like GET or POST, it implements the WATCH method, which establishes a stream to the server and reacts to events.
 
-All functions return **Promise** objects and can therefore be processed with a chain of `then`. With the `catch` call, possible errors are caught.
+All functions return Promise objects and can therefore be processed with a chain of then calls. Potential errors can be caught using the catch method.
 
-The client expects a Kubernetes API endpoint and a token. As soon as both parameters have been provided, the following functions are available:
+The client requires a Kubernetes API endpoint and a token. Once both parameters are provided, the following functions are available:
 
 - head
 - get
@@ -34,6 +34,8 @@ yarn add sapcc-k8sclient
 
 ## List all pods
 
+In this code snippet, we use the get method to fetch all pods from the Kubernetes API endpoint. The retrieved data is then logged to the console.
+
 ```js
 import { createClient } from "sapcc-k8sclient"
 
@@ -46,6 +48,8 @@ apiClient.get("/api/v1/pods").then((data) => console.log(data))
 ```
 
 ## Create a new namespace
+
+You can use this example to create a new namespace in the Kubernetes cluster.
 
 ```js
 import { createClient } from "sapcc-k8sclient"
@@ -68,6 +72,8 @@ apiClient.post("/api/v1/namespaces", {
 
 ## Delete a namespace
 
+The following example demonstrates how to delete a namespace in the Kubernetes cluster.
+
 ```js
 import { createClient } from "sapcc-k8sclient"
 
@@ -81,6 +87,8 @@ apiClient.delete("/api/v1/namespaces/my_namespace")
 
 ## Refresh Token
 
+Use this example to refresh the authentication token.
+
 ```js
 import { createClient } from "sapcc-k8sclient"
 
@@ -92,9 +100,13 @@ const apiClient = createClient({ apiEndpoint, token })
 apiClient.refreshToken("NEW-TOKEN")
 ```
 
-## Watch
+### Watch
 
-```js
+The watch call establishes a persistent connection to the Kubernetes API server and listens for changes to the specified resource. In this example, we're watching for changes to pods ("/api/v1/pods").
+
+The watch call should be **explicitly started** using `podsWatch.start()` to begin listening for changes, and it can be **cancelled** using `podsWatch.cancel()` when it's no longer needed.
+
+```javascript
 import { createClient } from "sapcc-k8sclient"
 
 const apiEndpoint = "https://k8s-api.com"
@@ -103,6 +115,7 @@ let token = "BEARER-TOKEN"
 const apiClient = createClient({ apiEndpoint, token })
 const dispatch = (action) => console.log(action)
 
+// Initialize the watch call
 const podsWatch = apiClient
   .watch("/api/v1/pods")
   .on(apiClient.WATCH_ERROR, () => console.log("ERROR"))
@@ -116,8 +129,10 @@ const podsWatch = apiClient
     dispatch({ type: "DELETE_ITEMS", items })
   )
 
+// Start the watch call to begin listening for changes
 podsWatch.start()
 
+// Optionally, set a timeout to cancel the watch call after a certain period
 setTimeout(podsWatch.cancel, 5 * 60 * 1000) // 5 minutes
 ```
 
@@ -127,6 +142,6 @@ All dependencies of this project are expressed in its package.json file. Before 
 
 ```bash
 npm install
-npm run build
 npm run test
+npm run build
 ```

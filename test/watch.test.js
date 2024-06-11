@@ -1,12 +1,12 @@
 /* eslint-disable import/first */
 
-jest.mock("./request", () => ({
+jest.mock("../src/request", () => ({
   __esModule: true,
-  default: jest.fn()
+  default: jest.fn(),
 }))
 
-import request from "./request"
-import { Watch, ADDED, MODIFIED, DELETED, ERROR } from "./watch"
+import request from "../src/request"
+import { Watch, ADDED, MODIFIED, DELETED, ERROR } from "../src/watch"
 
 describe("ADDED", () => {
   test("should be defined", () => {
@@ -43,9 +43,9 @@ describe("Watch", () => {
         json: () => null,
         body: {
           getReader: jest.fn(() => ({
-            read: jest.fn().mockResolvedValue({ value: "test", done: true })
-          }))
-        }
+            read: jest.fn().mockResolvedValue({ value: "test", done: true }),
+          })),
+        },
       })
     )
 

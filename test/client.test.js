@@ -1,16 +1,16 @@
 /* eslint-disable import/first */
-jest.mock("./request", () => ({
+jest.mock("../src/request", () => ({
   __esModule: true,
   default: jest.fn(),
 }))
 
-import { createClient } from "./client"
-import request from "./request"
+import { createClient } from "../src/client"
+import request from "../src/request"
 
 describe("k8sClient", () => {
   beforeEach(async () => {
     // mock fetch to avoid network calls
-    window.fetch = jest.fn(() => Promise.resolve({ status: 200 }))
+    global.fetch = jest.fn(() => Promise.resolve({ status: 200 }))
   })
 
   describe("createClient", () => {

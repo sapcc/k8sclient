@@ -1,4 +1,4 @@
-import { buildUrl } from "./urlHelpers"
+import { buildUrl } from "../src/urlHelpers"
 
 let hostUrl = "http://apiEndpoint.com"
 
@@ -53,7 +53,7 @@ describe("buildUrl", () => {
     expect(
       buildUrl(hostUrl, "path1", "v", 2, {
         key1: "value1",
-        key2: "value2"
+        key2: "value2",
       })
     ).toEqual(hostUrl + "/path1/v/2?key1=value1&key2=value2")
   })
