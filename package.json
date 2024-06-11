@@ -1,6 +1,6 @@
 {
   "name": "sapcc-k8sclient",
-  "version": "1.0.3-canary.1",
+  "version": "1.0.3",
   "description": "JavaScript client for Kubernetes API",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
